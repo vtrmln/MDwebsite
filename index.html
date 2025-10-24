@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Home Lab Journey — Building, Learning, and Experimenting</title>
+  <meta name="description" content="Home lab experiments, self-hosting and practical AI workflows. Notes on Proxmox, Docker, Tailscale and automation." />
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#6ee7b7;--muted:#9aa7b4;--text:#dbe7ee}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#071022 0%, #07142a 100%);color:var(--text);line-height:1.5}
+    .wrap{max-width:920px;margin:28px auto;padding:26px}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .logo{width:60px;height:60px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#02101c}
+    h1{margin:0;font-size:1.8rem}
+    p.lead{color:var(--muted);margin:10px 0 20px}
+    .card{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.6);margin-bottom:14px}
+    h2{margin-top:0}
+    ul{padding-left:18px}
+    .muted{color:var(--muted)}
+    footer{margin-top:28px;color:var(--muted);font-size:0.9rem}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(110,231,183,0.08);color:var(--accent);font-weight:600;margin-right:8px;font-size:0.86rem}
+    pre{background:#02101a;padding:12px;border-radius:8px;color:#cde;overflow:auto}
+    a{color:var(--accent);text-decoration:none}
+    @media (max-width:600px){.wrap{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">MU</div>
+      <div>
+        <h1>My Home Lab Journey — Building, Learning, and Experimenting</h1>
+        <div class="muted">Practical notes on self-hosting, AI workflows and infrastructure as code.</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <p class="lead">
+        Hi — I build things to learn how technology and AI workflows really work. These pages document experiments, real mistakes and the practical lessons that follow. This collection is a living record: short, practical, and reproducible.
+      </p>
+
+      <h2 class="pill">Overview</h2>
+      <p>
+        My home lab is a compact, hands-on setup built from an old Dell XPS 9350 running Proxmox VE. It’s where I test virtualization, containers, networking and AI acceleration — not for production, but to learn how systems fit together and to experiment with building useful prototypes.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What I built</h2>
+      <ul>
+        <li><strong>Proxmox VE</strong> as the hypervisor on an old laptop (USB-C Ethernet dongle used for network).</li>
+        <li><strong>Ubuntu Server VM</strong> as the Docker host (named <code>dockerhost</code>), with <em>Portainer</em> to manage containers.</li>
+        <li><strong>Immich</strong> deployed via Docker Compose; AI tasks are accelerated by an NVIDIA RTX 2070 SUPER GPU available on my LAN/gaming rig.</li>
+        <li>Experiments with services such as AdGuard and Nextcloud informed my networking and DNS approach.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Networking & domain</h2>
+      <p class="muted">Current state</p>
+      <ul>
+        <li>Most remote access is via <strong>Tailscale</strong> for secure, private connectivity while I experiment.</li>
+        <li>I purchased <strong>mulin.dev</strong> and added it to Cloudflare; DNS/nameservers will be finalized once the site and reverse proxy setup are ready.</li>
+        <li>Goal: provide simple HTTPS access for friends and family using Cloudflare Tunnels + automated certificates and a small reverse proxy on the server.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Storage & resilience</h2>
+      <p>I use a shared mount (e.g. <code>/mnt/storage</code>) mounted into the VM for uploaded files. Next steps include standardizing backups: VM snapshots, configuration in Git, and encrypted off-site mirrors for sensitive data.</p>
+    </section>
+
+    <section class="card">
+      <h2>Automation & next steps</h2>
+      <ul>
+        <li>Rebuild the stack reproducibly with <strong>Terraform</strong> and <strong>Ansible</strong> so the entire environment can be redeployed from scratch.</li>
+        <li>Continue documenting everything in an Obsidian vault to turn notes into a site and reproducible scripts.</li>
+        <li>Refine DNS, reverse proxy, and HTTPS for <code>mulin.dev</code>.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Why this matters</h2>
+      <p>
+        Beyond the technical skills, this project is how I learn to incorporate AI tools and workflows into practical prototypes. The ability to quickly prototype — sometimes without deep prior coding experience — changed how I approach problems, especially the kinds of operational challenges I saw while managing HVAC operations. These experiments are purposeful: they’re a way to practice turning ideas into working prototypes.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Side note — typing retraining</h2>
+      <p class="muted">A small but important habit: I’m retraining to touch-type properly. It’s slow progress, but it already improves my focus and throughput.</p>
+    </section>
+
+    <footer>
+      <div class="muted">This page was built to be simple and easy to update. Want me to add a downloadable backup of configs or a "how-to reproduce" short guide? <a href="https://github.com" target="_blank" rel="noreferrer">Reach out</a>.</div>
+    </footer>
+  </div>
+</body>
+</html>
